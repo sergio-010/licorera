@@ -106,9 +106,9 @@ export default function EditProductPage() {
   if (loading) return <p className="text-white p-4">Cargando...</p>
 
   return (
-    <main className="max-w-xl mx-auto mt-10 text-white bg-gradient-to-b from-[#1c1c1c] to-black p-6 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-6">Editar Producto</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-[#2e2e2e] p-6 rounded-lg border border-gold shadow-lg">
+    <main className="max-w-xl mx-auto mt-10 text-white bg-gradient-to-b from-[#1c1c1c] to-black p-4 sm:p-6 rounded-lg shadow-lg">
+      <h1 className="text-xl sm:text-2xl font-bold mb-6">Editar Producto</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-[#2e2e2e] p-4 sm:p-6 rounded-lg border border-gold shadow-lg">
         <input
           type="text"
           name="name"

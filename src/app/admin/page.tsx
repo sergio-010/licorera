@@ -15,7 +15,7 @@ export default async function AdminPage() {
                 + Agregar producto
             </Link>
             <div className="overflow-x-auto">
-                <table className="min-w-full bg-[#2e2e2e] border border-gold rounded-lg">
+                <table className="min-w-full text-sm sm:text-base bg-[#2e2e2e] border border-gold rounded-lg">
                     <thead>
                         <tr>
                             <th className="p-2 text-left border-b border-gold">Nombre</th>
