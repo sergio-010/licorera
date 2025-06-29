@@ -172,10 +172,10 @@ export default function EditProductPage() {
           <input type="checkbox" name="available" checked={form.available} onChange={handleChange} />
           Disponible
         </label>
-          <button type="submit" className="bg-gold text-black font-semibold py-2 rounded-md shadow hover:bg-yellow-400 transition">
+          <button type="submit" className="bg-gold text-black text-lg font-semibold py-2 rounded-md w-full border border-black/20 shadow-lg hover:bg-yellow-400 transition">
             Guardar cambios
           </button>
-          <button type="button" onClick={handleDelete} className="bg-red-600 text-white py-2 rounded-md shadow hover:bg-red-700 transition">
+          <button type="button" onClick={handleDelete} className="bg-red-600 text-white text-lg py-2 rounded-md w-full border border-black/20 shadow-lg hover:bg-red-700 transition">
             Eliminar producto
           </button>
       </form>

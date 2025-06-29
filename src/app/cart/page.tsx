@@ -38,7 +38,7 @@ export default function CartPage() {
           <p className="text-right font-bold text-xl">Total: ${total.toLocaleString()}</p>
           <a
             href={`https://wa.me/?text=${encodeURIComponent(message)}`}
-            className="block text-center bg-gold text-black py-2 rounded-md font-medium shadow hover:bg-yellow-400 transition"
+            className="block w-full text-center bg-gold text-black text-lg py-2 rounded-md font-medium border border-black/20 shadow-lg hover:bg-yellow-400 transition"
             onClick={clearCart}
           >
             Enviar pedido por WhatsApp

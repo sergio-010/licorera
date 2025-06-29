@@ -146,7 +146,7 @@ export default function CreateProductPage() {
                 <button
                     type="submit"
                     disabled={uploading}
-                    className="bg-gold text-black font-semibold py-2 rounded-md shadow hover:bg-yellow-400 transition"
+                    className="bg-gold text-black text-lg font-semibold py-2 rounded-md w-full border border-black/20 shadow-lg hover:bg-yellow-400 transition"
                 >
                     {uploading ? 'Guardando...' : 'Guardar producto'}
                 </button>
