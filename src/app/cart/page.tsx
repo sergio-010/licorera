@@ -21,11 +21,14 @@ export default function CartPage() {
       ) : (
         <div className="space-y-4">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 bg-[#2e2e2e] p-4 rounded-lg border border-gold shadow hover:shadow-lg transition">
-              <div className="relative w-16 h-16">
+            <div
+              key={item.id}
+              className="flex flex-col sm:flex-row items-center gap-4 bg-[#2e2e2e] p-4 rounded-lg border border-gold shadow hover:shadow-lg transition"
+            >
+              <div className="relative w-full h-32 sm:w-16 sm:h-16">
                 <Image src={item.image_url} alt={item.name} fill className="object-contain rounded" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <p className="font-semibold">{item.name}</p>
                 <p className="text-sm text-gray-400">Cantidad: {item.quantity}</p>
               </div>

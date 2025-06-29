@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "La Licorera",
   description: "Compra tus licores favoritos y recibe tu pedido por WhatsApp",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({

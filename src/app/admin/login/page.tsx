@@ -36,9 +36,9 @@ export default function LoginPage() {
         <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1c1c1c] to-black text-white px-4">
             <form
                 onSubmit={handleLogin}
-                className="bg-[#2e2e2e] p-6 rounded-lg border border-gold w-full max-w-sm shadow-lg space-y-4"
+                className="bg-[#2e2e2e] p-4 sm:p-6 rounded-lg border border-gold w-full max-w-sm shadow-lg space-y-4"
             >
-                <h1 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
+                <h1 className="text-xl sm:text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
                 {errorMsg && (
                     <div className="bg-red-500 text-white p-2 rounded mb-4 text-sm">
                         {errorMsg}
