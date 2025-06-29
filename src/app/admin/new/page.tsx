@@ -13,6 +13,7 @@ export default function CreateProductPage() {
         price: '',
         stock: '',
         available: true,
+        image_url: '',
     });
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState(false);
@@ -30,7 +31,7 @@ export default function CreateProductPage() {
         e.preventDefault();
         setUploading(true);
 
-        let imageUrl = '';
+        let imageUrl = form.image_url;
 
         if (imageFile) {
             const uploaded = await uploadProductImage(imageFile);
@@ -104,6 +105,14 @@ export default function CreateProductPage() {
                     accept="image/*"
                     onChange={(e) => setImageFile(e.target.files?.[0] ?? null)}
                     className="text-sm text-gray-300"
+                />
+                <input
+                    type="text"
+                    name="image_url"
+                    placeholder="URL de la imagen"
+                    value={form.image_url}
+                    onChange={handleChange}
+                    className="p-2 rounded bg-black text-white border border-gray-600"
                 />
                 <label className="flex items-center gap-2">
                     <input

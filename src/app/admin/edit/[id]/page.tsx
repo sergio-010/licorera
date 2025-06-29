@@ -16,6 +16,7 @@ export default function EditProductPage() {
     price: string
     stock: string
     available: boolean
+    image_url: string
   }
 
   const [form, setForm] = useState<FormState>({
@@ -24,6 +25,7 @@ export default function EditProductPage() {
     price: '',
     stock: '',
     available: true,
+    image_url: '',
   })
   const [imageFile, setImageFile] = useState<File | null>(null)
 
@@ -37,6 +39,7 @@ export default function EditProductPage() {
           price: String(data.price),
           stock: String(data.stock),
           available: data.available,
+          image_url: data.image_url,
         })
       }
       setLoading(false)
@@ -56,7 +59,7 @@ export default function EditProductPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-  let imageUrl = ''
+  let imageUrl = form.image_url
   if (imageFile) {
     const uploaded = await uploadProductImage(imageFile)
     if (!uploaded) {
@@ -74,7 +77,7 @@ export default function EditProductPage() {
         price: Number(form.price),
         stock: Number(form.stock),
         available: form.available,
-        ...(imageUrl ? { image_url: imageUrl } : {}),
+        image_url: imageUrl,
       })
       .eq('id', productId)
 
@@ -132,6 +135,14 @@ export default function EditProductPage() {
           className="p-2 rounded bg-black text-white border border-gray-600"
         />
         <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] ?? null)} className="text-sm text-gray-300" />
+        <input
+          type="text"
+          name="image_url"
+          placeholder="URL de la imagen"
+          value={form.image_url}
+          onChange={handleChange}
+          className="p-2 rounded bg-black text-white border border-gray-600"
+        />
         <label className="flex items-center gap-2">
           <input type="checkbox" name="available" checked={form.available} onChange={handleChange} />
           Disponible
