@@ -10,6 +10,8 @@ export default function CreateProductPage() {
     const [form, setForm] = useState({
         name: '',
         description: '',
+        brand: '',
+        category: '',
         price: '',
         stock: '',
         available: true,
@@ -45,6 +47,8 @@ export default function CreateProductPage() {
         const { error } = await supabase.from('products').insert({
             name: form.name,
             description: form.description,
+            brand: form.brand,
+            category: form.category,
             price: Number(form.price),
             stock: Number(form.stock),
             image_url: imageUrl,
@@ -78,6 +82,22 @@ export default function CreateProductPage() {
                     name="description"
                     placeholder="Descripción"
                     value={form.description}
+                    onChange={handleChange}
+                    className="p-2 rounded bg-black text-white border border-gray-600"
+                />
+                <input
+                    type="text"
+                    name="brand"
+                    placeholder="Marca"
+                    value={form.brand}
+                    onChange={handleChange}
+                    className="p-2 rounded bg-black text-white border border-gray-600"
+                />
+                <input
+                    type="text"
+                    name="category"
+                    placeholder="Categoría"
+                    value={form.category}
                     onChange={handleChange}
                     className="p-2 rounded bg-black text-white border border-gray-600"
                 />
