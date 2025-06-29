@@ -20,3 +20,26 @@ npm run dev
 - Middleware que protege las rutas de administración.
 
 El diseño utiliza un tema oscuro con detalles en dorado y la fuente Geist.
+
+## Esquema de productos
+
+El proyecto utiliza una tabla `products` en Supabase. El script SQL para crearla se encuentra en `supabase/schema.sql`.
+
+| Columna     | Tipo        | Requerido | Default             | Comentario                     |
+|-------------|-------------|-----------|---------------------|-------------------------------|
+| id          | uuid        | ✅        | uuid_generate_v4()  | Identificador único           |
+| name        | text        | ✅        | —                   | Nombre del producto           |
+| description | text        | ❌        | —                   | Descripción corta             |
+| brand       | text        | ❌        | —                   | Marca o productor             |
+| category    | text        | ❌        | —                   | Categoría del producto        |
+| price       | integer     | ✅        | —                   | Precio en pesos               |
+| stock       | integer     | ✅        | 0                   | Cantidad disponible           |
+| available   | boolean     | ✅        | true                | Visible al público            |
+| image_url   | text        | ❌        | —                   | URL pública de la imagen      |
+| created_at  | timestamptz | ✅        | now()               | Fecha de creación             |
+| updated_at  | timestamptz | ✅        | now()               | Fecha de última actualización |
+
+La tabla cuenta con índices en las columnas `available`, `category` y `brand` para
+mejorar las consultas. Además, incluye un trigger que actualiza el campo
+`updated_at` cada vez que se modifica un registro.
+
