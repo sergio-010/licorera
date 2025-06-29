@@ -35,14 +35,14 @@ export default function CartPage() {
           <p className="text-right font-bold text-xl">Total: ${total.toLocaleString()}</p>
           <a
             href={`https://wa.me/?text=${encodeURIComponent(message)}`}
-            className="block text-center bg-gold text-black py-2 rounded hover:bg-yellow-400 transition"
+            className="block text-center bg-gold text-black py-2 rounded-md font-medium shadow hover:bg-yellow-400 transition"
             onClick={clearCart}
           >
             Enviar pedido por WhatsApp
           </a>
         </div>
       )}
-      <Link href="/" className="block mt-6 underline text-gray-300">Seguir comprando</Link>
+      <Link href="/" className="block mt-6 text-gray-300 hover:text-gold">Seguir comprando</Link>
     </main>
   )
 }
