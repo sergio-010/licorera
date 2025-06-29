@@ -12,10 +12,10 @@ export default async function HomePage() {
     .order('created_at', { ascending: false });
 
   return (
-    <div className="bg-[#1c1c1c] text-white min-h-screen py-12 px-6">
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-serif text-gold">La Licorera</h1>
-        <p className="text-gray-400 mt-2 text-lg">
+    <div className="bg-[var(--color-background)] text-[var(--color-foreground)] min-h-screen py-12 px-6">
+      <header className="text-center mb-10 py-8 bg-gradient-to-r from-gold to-yellow-500 rounded-lg shadow">
+        <h1 className="text-4xl font-serif text-black drop-shadow-sm">La Licorera</h1>
+        <p className="text-black mt-2 text-lg">
           Elige tus licores favoritos y recibe tu pedido por WhatsApp.
         </p>
       </header>
@@ -24,7 +24,7 @@ export default async function HomePage() {
         {products?.map((product) => (
           <div
             key={product.id}
-            className="bg-[#2e2e2e] rounded-lg shadow-lg border border-gold p-4 flex flex-col items-center transition hover:scale-[1.02]"
+            className="bg-[#2e2e2e] rounded-lg shadow-lg border border-gold p-4 flex flex-col items-center transition transform hover:-translate-y-1 hover:shadow-xl"
           >
             <div className="w-full h-40 relative mb-4">
               <Image

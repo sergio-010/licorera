@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
+import { uploadProductImage } from '@/lib/uploadImage';
 
 export default function CreateProductPage() {
     const router = useRouter();
@@ -32,20 +33,13 @@ export default function CreateProductPage() {
         let imageUrl = '';
 
         if (imageFile) {
-            const { data, error } = await supabase.storage
-                .from('products-images')
-                .upload(`product-${Date.now()}`, imageFile);
-
-            if (error) {
+            const uploaded = await uploadProductImage(imageFile);
+            if (!uploaded) {
                 alert('Error subiendo imagen');
-                console.error(error);
                 setUploading(false);
                 return;
             }
-
-            imageUrl = supabase.storage
-                .from('products-images')
-                .getPublicUrl(data.path).data.publicUrl;
+            imageUrl = uploaded;
         }
 
         const { error } = await supabase.from('products').insert({
@@ -123,7 +117,7 @@ export default function CreateProductPage() {
                 <button
                     type="submit"
                     disabled={uploading}
-                    className="bg-gold text-black font-semibold py-2 rounded hover:bg-yellow-400 transition"
+                    className="bg-gold text-black font-semibold py-2 rounded-md shadow hover:bg-yellow-400 transition"
                 >
                     {uploading ? 'Guardando...' : 'Guardar producto'}
                 </button>

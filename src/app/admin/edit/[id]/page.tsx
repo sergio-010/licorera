@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { uploadProductImage } from '@/lib/uploadImage'
 
 export default function EditProductPage() {
   const router = useRouter()
@@ -55,18 +56,15 @@ export default function EditProductPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    let imageUrl = ''
-    if (imageFile) {
-      const { data, error } = await supabase.storage
-        .from('products-images')
-        .upload(`product-${Date.now()}`, imageFile)
-      if (error) {
-        alert('Error subiendo imagen')
-        console.error(error)
-        return
-      }
-      imageUrl = supabase.storage.from('products-images').getPublicUrl(data.path).data.publicUrl
+  let imageUrl = ''
+  if (imageFile) {
+    const uploaded = await uploadProductImage(imageFile)
+    if (!uploaded) {
+      alert('Error subiendo imagen')
+      return
     }
+    imageUrl = uploaded
+  }
 
     const { error } = await supabase
       .from('products')
@@ -138,12 +136,12 @@ export default function EditProductPage() {
           <input type="checkbox" name="available" checked={form.available} onChange={handleChange} />
           Disponible
         </label>
-        <button type="submit" className="bg-gold text-black font-semibold py-2 rounded hover:bg-yellow-400 transition">
-          Guardar cambios
-        </button>
-        <button type="button" onClick={handleDelete} className="bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
-          Eliminar producto
-        </button>
+          <button type="submit" className="bg-gold text-black font-semibold py-2 rounded-md shadow hover:bg-yellow-400 transition">
+            Guardar cambios
+          </button>
+          <button type="button" onClick={handleDelete} className="bg-red-600 text-white py-2 rounded-md shadow hover:bg-red-700 transition">
+            Eliminar producto
+          </button>
       </form>
     </main>
   )
