@@ -6,7 +6,7 @@ export default async function AdminPage() {
     const { data: products } = await supabase.from('products').select('*');
 
     return (
-        <main className="p-8 text-white">
+        <main className="p-8 text-white bg-[#1c1c1c] min-h-screen">
             <h1 className="text-2xl font-bold mb-6">Panel de Administración</h1>
             <Link
                 href="/admin/new"
@@ -26,7 +26,7 @@ export default async function AdminPage() {
                     </thead>
                     <tbody>
                         {products?.map((product) => (
-                            <tr key={product.id}>
+                            <tr key={product.id} className="even:bg-[#262626]">
                                 <td className="p-2">{product.name}</td>
                                 <td className="p-2">${product.price.toLocaleString()}</td>
                                 <td className="p-2">{product.stock}</td>
