@@ -1,7 +1,7 @@
 
 import { supabase } from '@/lib/supabase';
 import Image from 'next/image';
-import Link from 'next/link';
+import AddToCartButton from '@/components/AddToCartButton';
 
 export default async function HomePage() {
   const { data: products } = await supabase
@@ -39,12 +39,7 @@ export default async function HomePage() {
             <p className="mt-2 text-gold font-bold text-lg">
               ${product.price.toLocaleString()}
             </p>
-            <Link
-              href="/cart"
-              className="mt-4 bg-gold text-black px-4 py-2 rounded hover:bg-yellow-400 transition"
-            >
-              Agregar al carrito
-            </Link>
+            <AddToCartButton product={product} />
           </div>
         ))}
       </div>
