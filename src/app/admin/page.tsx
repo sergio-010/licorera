@@ -21,6 +21,7 @@ export default async function AdminPage() {
                             <th className="p-2 text-left border-b border-gold">Nombre</th>
                             <th className="p-2 text-left border-b border-gold">Precio</th>
                             <th className="p-2 text-left border-b border-gold">Stock</th>
+                            <th className="p-2 text-left border-b border-gold">Disponible</th>
                             <th className="p-2 text-left border-b border-gold">Acciones</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@ export default async function AdminPage() {
                                 <td className="p-2">{product.name}</td>
                                 <td className="p-2">${product.price.toLocaleString()}</td>
                                 <td className="p-2">{product.stock}</td>
+                                <td className="p-2">{product.available ? 'Sí' : 'No'}</td>
                                 <td className="p-2">
                                     <Link
                                         href={`/admin/edit/${product.id}`}
