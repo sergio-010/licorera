@@ -13,6 +13,8 @@ export default function EditProductPage() {
   interface FormState {
     name: string
     description: string
+    brand: string
+    category: string
     price: string
     stock: string
     available: boolean
@@ -21,6 +23,8 @@ export default function EditProductPage() {
   const [form, setForm] = useState<FormState>({
     name: '',
     description: '',
+    brand: '',
+    category: '',
     price: '',
     stock: '',
     available: true,
@@ -34,6 +38,8 @@ export default function EditProductPage() {
         setForm({
           name: data.name,
           description: data.description,
+          brand: data.brand ?? '',
+          category: data.category ?? '',
           price: String(data.price),
           stock: String(data.stock),
           available: data.available,
@@ -71,9 +77,12 @@ export default function EditProductPage() {
       .update({
         name: form.name,
         description: form.description,
+        brand: form.brand,
+        category: form.category,
         price: Number(form.price),
         stock: Number(form.stock),
         available: form.available,
+        updated_at: new Date().toISOString(),
         ...(imageUrl ? { image_url: imageUrl } : {}),
       })
       .eq('id', productId)
@@ -110,6 +119,22 @@ export default function EditProductPage() {
           name="description"
           placeholder="Descripción"
           value={form.description}
+          onChange={handleChange}
+          className="p-2 rounded bg-black text-white border border-gray-600"
+        />
+        <input
+          type="text"
+          name="brand"
+          placeholder="Marca"
+          value={form.brand}
+          onChange={handleChange}
+          className="p-2 rounded bg-black text-white border border-gray-600"
+        />
+        <input
+          type="text"
+          name="category"
+          placeholder="Categoría"
+          value={form.category}
           onChange={handleChange}
           className="p-2 rounded bg-black text-white border border-gray-600"
         />
