@@ -33,10 +33,10 @@ export default function LoginPage() {
     };
 
     return (
-        <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1c1c1c] to-black text-white">
+        <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1c1c1c] to-black text-white px-4">
             <form
                 onSubmit={handleLogin}
-                className="bg-[#2e2e2e] p-6 rounded-lg border border-gold w-full max-w-sm shadow-lg"
+                className="bg-[#2e2e2e] p-6 rounded-lg border border-gold w-full max-w-sm shadow-lg space-y-4"
             >
                 <h1 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
                 {errorMsg && (
@@ -50,7 +50,7 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full p-2 mb-3 rounded bg-black text-white border border-gray-600"
+                    className="w-full p-2 mb-3 rounded bg-black text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gold"
                 />
                 <input
                     type="password"
@@ -58,12 +58,12 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full p-2 mb-3 rounded bg-black text-white border border-gray-600"
+                    className="w-full p-2 mb-3 rounded bg-black text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gold"
                 />
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-gold text-black font-semibold w-full py-2 rounded-md shadow hover:bg-yellow-400 transition"
+                    className="bg-gold text-black font-semibold w-full py-2 rounded-md shadow hover:bg-yellow-400 transition-transform transform hover:scale-105 disabled:opacity-70"
                 >
                     {loading ? 'Ingresando...' : 'Ingresar'}
                 </button>
