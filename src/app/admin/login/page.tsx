@@ -27,6 +27,7 @@ export default function LoginPage() {
         if (error) {
             setErrorMsg('Correo o contraseña incorrectos');
         } else {
+            document.cookie = 'logged-in=true; path=/';
             const redirect = searchParams.get('redirect') || '/admin';
             router.push(redirect);
         }
