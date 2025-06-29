@@ -2,6 +2,7 @@
 
 :root {
   --background: #ffffff;
+  --background-end: #f9f9f9;
   --foreground: #171717;
 }
 
@@ -15,12 +16,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
+    --background-end: #1a1a1a;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom, var(--background), var(--background-end));
   color: var(--foreground);
   font-family: var(--font-sans);
 }

@@ -24,7 +24,7 @@ export default async function HomePage() {
         {products?.map((product) => (
           <div
             key={product.id}
-            className="bg-[#2e2e2e] rounded-lg shadow-lg border border-gold p-4 flex flex-col items-center transition transform hover:-translate-y-1 hover:shadow-xl"
+            className="bg-gradient-to-b from-[#2e2e2e] to-[#1c1c1c] rounded-xl shadow-lg border border-gold/40 p-4 flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl"
           >
             <div className="w-full h-40 relative mb-4">
               <Image

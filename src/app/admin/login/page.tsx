@@ -33,10 +33,10 @@ export default function LoginPage() {
     };
 
     return (
-        <main className="min-h-screen flex items-center justify-center bg-[#1c1c1c] text-white">
+        <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1c1c1c] to-black text-white">
             <form
                 onSubmit={handleLogin}
-                className="bg-[#2e2e2e] p-6 rounded-lg border border-gold w-full max-w-sm"
+                className="bg-[#2e2e2e] p-6 rounded-lg border border-gold w-full max-w-sm shadow-lg"
             >
                 <h1 className="text-2xl font-bold mb-4 text-center">Iniciar sesión</h1>
                 {errorMsg && (
